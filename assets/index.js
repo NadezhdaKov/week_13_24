@@ -30,10 +30,11 @@ function countDifference () {
         const thisYearDateTimestamp = Date.parse(thisYearDate);
         const thisYearDayDiff = Math.ceil((thisYearDateTimestamp-currentDateTimestamp)/day);
 
-        switch (thisYearDayDiff) {
+        switch (thisYearDayDiff=1) {
             case 1:
             document.querySelector('#result').innerHTML = `До Вашего дня рождения остался ${thisYearDayDiff} день`;
             break;
+
 
             default:
             document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${thisYearDayDiff} дней (дня)`;
