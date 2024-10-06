@@ -1,6 +1,6 @@
 
 function countDifference () {
-    const result = document.querySelector('#result')
+    const result = document.querySelector('#result') //абзац в котором будет отображаться текст
 
     const userDate = document.querySelector('#userDate')
     const userDateStr = userDate.value;
@@ -10,6 +10,7 @@ function countDifference () {
     const currentDate = new Date ();
     const currentDateTimestamp = Date.parse(currentDate);
 
+    //значения для дальнейшего сравнения с текущей датой:
     const userYear = userDateValue.getFullYear();
     const userMonth = userDateValue.getMonth();
     const userDay = userDateValue.getDate();
@@ -19,8 +20,12 @@ function countDifference () {
     const currentDay = currentDate.getDate();
 
     day=1000*60*60*24
+
+    if (Number.isNaN(userDateTimestamp)) {
+        document.querySelector('#result').innerHTML = 'Укажите дату рождения';
+    }
     
-    if (userMonth >= currentMonth && userDay >= currentDay) {
+    else if (userMonth >= currentMonth && userDay >= currentDay) {
         const thisYearDate = new Date (currentYear, userMonth, userDay);
         const thisYearDateTimestamp = Date.parse(thisYearDate);
         const thisYearDayDiff = Math.ceil((thisYearDateTimestamp-currentDateTimestamp)/day);
@@ -42,4 +47,3 @@ function countDifference () {
         document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${nextYearDayDiff} дней (дня)`;
     }
 }
-
