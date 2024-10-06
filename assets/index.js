@@ -29,15 +29,21 @@ function countDifference () {
         const thisYearDate = new Date (currentYear, userMonth, userDay);
         const thisYearDateTimestamp = Date.parse(thisYearDate);
         const thisYearDayDiff = Math.ceil((thisYearDateTimestamp-currentDateTimestamp)/day);
+        let thisYearLastLetter = thisYearDayDiff % 10;
 
-        switch (thisYearDayDiff=1) {
+        switch (thisYearLastLetter) {
             case 1:
-            document.querySelector('#result').innerHTML = `До Вашего дня рождения остался ${thisYearDayDiff} день`;
-            break;
+                document.querySelector('#result').innerHTML = `До Вашего дня рождения остался ${thisYearDayDiff} день`;
+                break;
 
+            case 2:
+            case 3:
+            case 4:
+                document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${thisYearDayDiff} дня`
+                break;
 
             default:
-            document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${thisYearDayDiff} дней (дня)`;
+                document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${thisYearDayDiff} дней`;
         }
     }
 
@@ -45,6 +51,21 @@ function countDifference () {
         const nextYearDate = new Date (currentYear+1, userMonth, userDay);
         const nextYearDateTimestamp = Date.parse(nextYearDate);
         const nextYearDayDiff = Math.ceil((nextYearDateTimestamp-currentDateTimestamp)/day);
-        document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${nextYearDayDiff} дней (дня)`;
+
+        let nextYearDayDiffLetter = nextYearDayDiff % 10;
+
+        switch (nextYearDayDiffLetter) {
+            case 1:
+                document.querySelector('#result').innerHTML = `До Вашего дня рождения остался ${nextYearDayDiff} день`;
+                break;
+
+            case 2:
+            case 3:
+            case 4:
+                document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${nextYearDayDiff} дня`
+
+            default:
+                document.querySelector('#result').innerHTML = `До Вашего дня рождения осталось ${nextYearDayDiff} дней`;
+        }   
     }
 }
